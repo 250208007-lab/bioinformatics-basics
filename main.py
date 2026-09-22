@@ -1,31 +1,14 @@
-print("=== Genetic Sequence Analysis Program ===")
-
-dna_sequence = input("Enter a DNA sequence: ").upper()
-total_bases = len(dna_sequence)
-
-
-if total_bases > 0:
-    g_Count = dna_sequence.count('G')
-    c_Count = dna_sequence.count('C')
-    
-  
-    gc_content = (g_Count + c_Count) / total_bases * 100
-    
-    rna_sequence = dna_sequence.replace('T', 'U')
-
-    print("\n--- ANALYSIS RESULTS ---")
-    print(f"Original DNA Sequence: {dna_sequence}")
-    print(f"Transcribed RNA Sequence: {rna_sequence}")
-    print(f"Total bases: {total_bases}")
-    print(f"Guanine (G) count: {g_Count}")
-    print(f"Cytosine (C) count: {c_Count}")
-    print(f"GC Content: %{gc_content:.2f}")
-
-    if "ATG" in dna_sequence:
-        print("Start Codon (ATG): Found")
-    else:
-        print("Start Codon (ATG): Not Found")
-
+print("---Protein Translator and Amino Acid Counter---")
+rna_sequence = input("Please enter a Rna kodon sequence with three letters (e.g. AUG): ").upper()
+if rna_sequence == "":
+    print("RNA sequence cannot be empty.")
+elif len(rna_sequence) != 3:
+    print("RNA sequence must be exactly 3 letters long.")
+elif rna_sequence == "AUG":
+    print("The amino acid is Methionine (Start codon).")
+elif rna_sequence == "GCU" or rna_sequence == "GCC":
+    print("The amino acid is Alanine.")
+elif rna_sequence == "UAA" or rna_sequence == "UGA":
+    print("The amino acid is a Stop codon.")
 else:
-    print("Warning: You entered an empty sequence!")
-
+    print("The amino acid is not recognized.")
